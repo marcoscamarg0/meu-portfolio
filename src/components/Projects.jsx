@@ -6,7 +6,7 @@ const Projects = () => {
     {
       title: "Cartão Clonado",
       description: "Fiz um site para um meme entre meus amigos com fucionalidades de verificar se o cartão é clonado rsrs.",
-      image: "src/assets/memecartao.jpg",
+      image: "/memecartao.jpg",
       technologies: ["React", "tailwind", "Vite"],
       github: "https://github.com/marcoscamarg0/cartao",
       demo: "http://cartao-two.vercel.app"
@@ -14,7 +14,7 @@ const Projects = () => {
     {
       title: "CAV Piscinas",
       description: "Landing page para apresentar o trabalho do CAV Piscinas, com informações sobre serviços e contato.",
-      image: "src/assets/cavpiscinas.jpg",
+      image: "/cavpiscinas.jpg",
       technologies: ["React", "Vite", "Tailwind CSS"],
       github: "https://github.com/marcoscamarg0/CAV-PISCINAS",
       demo: "https://cav-piscinas.vercel.app/"
@@ -22,7 +22,7 @@ const Projects = () => {
     {
       title: "App de monitoramento de percurso de Kart",
       description: "Aplicativo para para monitorar o percurso de kart, com funcionalidades de login, cadastro e visualização de dados em tempo real.",
-      image: "src/assets/kartapp.jpg",
+      image: "/kartapp.jpg",
       technologies: ["React Native", "TypeScript", "Tailwind CSS", "Google Maps API"],
       github: "https://github.com/username/productivity-app",
       demo: ""
@@ -30,7 +30,7 @@ const Projects = () => {
     {
       title: "Calculadora pra rolê",
       description: "Site que faz a soma dos valores e diz se é possível dividir entre os participantes.",
-      image: "src/assets/calculadora.jpg",
+      image: "/calculadora.jpg",
       technologies: ["React", "Vite", "CSS"],
       github: "https://github.com/marcoscamarg0/Calculadora_de_Role",
       demo: "http://roshamizade.vercel.app"
@@ -38,7 +38,7 @@ const Projects = () => {
     {
       title: "Terapia de reprocessamento generativo",
       description: "Landing page para terapia de reprocessamento generativo com informações sobre o método e depoimentos.",
-      image: "src/assets/trg.jpg",
+      image: "/trg.jpg",
       technologies: ["HTML", "CSS", "JavaScript"],
       github: "https://github.com/marcoscamarg0/trg-pi1",
       demo: "https://trg-pi1.vercel.app/"
@@ -46,7 +46,7 @@ const Projects = () => {
     {
       title: "Site que mostra as horas",
       description: "WebSite simples que mostra a hora atual no horário de Brasília.",
-      image: "src/assets/hora.jpg",
+      image: "/hora.jpg",
       technologies: ["HTML", "CSS", "JavaScript"],
       github: "https://github.com/marcoscamarg0/relogio-digital",
       demo: "https://relogio-digital-woad.vercel.app/"

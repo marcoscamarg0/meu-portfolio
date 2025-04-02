@@ -26,7 +26,7 @@ const About = () => {
           >
             <div className="aspect-square max-w-md mx-auto overflow-hidden rounded-full border-4 border-primary dark:border-blue-400">
               <img 
-                src="src/assets/8686.jpg" 
+                src="/8686.jpg" 
                 alt="Minha foto de perfil" 
                 className="w-full h-full object-cover"
                 onError={(e) => {
