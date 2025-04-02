@@ -4,7 +4,7 @@ import ProjectCard from './ProjectCard';
 const Projects = () => {
   const projects = [
     {
-      title: "Cartão Clonado",
+      title: "Checker Credit Card",
       description: "Fiz um site para um meme entre meus amigos com fucionalidades de verificar se o cartão é clonado rsrs.",
       image: "/memecartao.jpg",
       technologies: ["React", "tailwind", "Vite"],
@@ -24,7 +24,7 @@ const Projects = () => {
       description: "Aplicativo para para monitorar o percurso de kart, com funcionalidades de login, cadastro e visualização de dados em tempo real.",
       image: "/kartapp.jpg",
       technologies: ["React Native", "TypeScript", "Tailwind CSS", "Google Maps API"],
-      github: "https://github.com/username/productivity-app",
+      github: "https://github.com/marcoscamarg0/KartApp",
       demo: ""
     },
     {
