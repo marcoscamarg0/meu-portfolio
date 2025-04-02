@@ -30,7 +30,7 @@ const About = () => {
                 alt="Minha foto de perfil" 
                 className="w-full h-full object-cover"
                 onError={(e) => {
-                  e.target.src = '';
+                  e.target.src = 'https://placehold.co/600x400/png';
                 }}
               />
             </div>
