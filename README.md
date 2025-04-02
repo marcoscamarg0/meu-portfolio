@@ -1,12 +1,54 @@
-# React + Vite
+# Meu Portfólio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bem-vindo ao meu portfólio! Este projeto foi desenvolvido para apresentar minhas habilidades, experiências e projetos na área de tecnologia.
 
-Currently, two official plugins are available:
+## 🌐 Acesse o Portfólio
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 [Meu Portfólio](https://meu-portfolio-swart-six.vercel.app/)
 
-## Expanding the ESLint configuration
+## 🛠 Tecnologias Utilizadas
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React** - Biblioteca JavaScript para construção de interfaces de usuário
+- **Next.js** - Framework para React com renderização do lado do servidor (SSR)
+- **Tailwind CSS** - Framework CSS para estilização
+- **Vercel** - Plataforma de deploy
+
+## 📌 Funcionalidades
+
+- Apresentação de informações pessoais
+- Listagem de projetos desenvolvidos
+- Links para redes sociais e contato
+
+## 🚀 Como Rodar Localmente
+
+Caso queira rodar o projeto localmente, siga os passos abaixo:
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/seu-repositorio.git
+   ```
+2. Acesse a pasta do projeto:
+   ```bash
+   cd meu-portfolio
+   ```
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
+4. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   ```
+5. Abra o navegador e acesse `http://localhost:3000`
+
+## 📩 Contato
+
+Caso queira entrar em contato, me encontre em:
+- **Email:** seuemail@email.com
+- **LinkedIn:** [linkedin.com/in/mamrcoscamarg0](https://www.linkedin.com/in/marcoscamarg0/)
+- **GitHub:** [github.com/mamrcoscamarg0]([https://github.com/seuusuario](https://github.com/marcoscamarg0))
+
+---
+
+Feito com ❤️ por [Seu Nome]
+
