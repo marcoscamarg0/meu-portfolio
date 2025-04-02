@@ -7,7 +7,6 @@ const Navbar = memo(({ scrollPosition = 0 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
-
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
     return savedTheme ? savedTheme === 'dark' : prefersDark;
@@ -29,10 +28,8 @@ const Navbar = memo(({ scrollPosition = 0 }) => {
     { name: 'Contato', href: '#contact' },
   ];
 
-  
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode);
-    
     localStorage.setItem('theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
 
@@ -42,10 +39,17 @@ const Navbar = memo(({ scrollPosition = 0 }) => {
     };
     
     const handleClick = (e) => {
-      if (isOpen && !e.target.closest('#mobile-menu')) {
+      if (isOpen && !e.target.closest('#mobile-menu') && !e.target.closest('#menu-toggle')) {
         setIsOpen(false);
       }
     };
+    
+    // Desabilita o scroll quando o menu está aberto
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
     
     window.addEventListener('keydown', handleEsc);
     document.addEventListener('click', handleClick);
@@ -53,24 +57,31 @@ const Navbar = memo(({ scrollPosition = 0 }) => {
     return () => {
       window.removeEventListener('keydown', handleEsc);
       document.removeEventListener('click', handleClick);
+      document.body.style.overflow = 'auto';
     };
   }, [isOpen]);
+  
+  const handleLinkClick = useCallback(() => {
+    setIsOpen(false);
+  }, []);
   
   return (
     <nav 
       className={`fixed w-full z-50 transition-all duration-300 ${
         scrollPosition > 50 
           ? 'bg-white dark:bg-gray-900 shadow-md py-2' 
-          : 'bg-transparent dark:bg-transparent py-4'
+          : isOpen 
+            ? 'bg-white dark:bg-gray-900 shadow-md py-2'
+            : 'bg-transparent dark:bg-transparent py-4'
       }`}
       role="navigation"
-      aria-label="Main navigation"
+      aria-label="Menu principal"
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <a 
           href="#home" 
           className="text-2xl font-bold text-primary dark:text-blue-400"
-          aria-label="Go to home section"
+          aria-label="Ir para seção inicial"
         >
           M<span className="text-dark dark:text-white">C</span>
         </a>
@@ -83,7 +94,7 @@ const Navbar = memo(({ scrollPosition = 0 }) => {
               href={link.href} 
               className="text-dark dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors"
               role="menuitem"
-              aria-label={`Go to ${link.name} section`}
+              aria-label={`Ir para seção ${link.name}`}
             >
               {link.name}
             </a>
@@ -92,7 +103,7 @@ const Navbar = memo(({ scrollPosition = 0 }) => {
           {/* Dark Mode Toggle Button */}
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-yellow-300 transition-colors"
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-yellow-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
             aria-label={darkMode ? "Ativar modo claro" : "Ativar modo escuro"}
           >
             {darkMode ? <FaSun className="w-5 h-5" /> : <FaMoon className="w-5 h-5" />}
@@ -104,18 +115,19 @@ const Navbar = memo(({ scrollPosition = 0 }) => {
           {/* Dark Mode Toggle Button (Mobile) */}
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-yellow-300 transition-colors"
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-yellow-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
             aria-label={darkMode ? "Ativar modo claro" : "Ativar modo escuro"}
           >
             {darkMode ? <FaSun className="w-4 h-4" /> : <FaMoon className="w-4 h-4" />}
           </button>
           
           <button 
-            className="text-dark dark:text-white text-2xl focus:outline-none"
+            id="menu-toggle"
+            className="text-dark dark:text-white text-2xl p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary"
             onClick={toggleMenu}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
           >
             {isOpen ? <FiX aria-hidden="true" /> : <FiMenu aria-hidden="true" />}
           </button>
@@ -125,23 +137,29 @@ const Navbar = memo(({ scrollPosition = 0 }) => {
       {/* Mobile Navigation Menu */}
       <div 
         id="mobile-menu"
-        className={`md:hidden bg-white dark:bg-gray-900 shadow-lg absolute top-full left-0 right-0 transition-transform duration-300 ${
-          isOpen ? 'transform translate-y-0' : 'transform -translate-y-full'
+        className={`md:hidden fixed top-[var(--nav-height,56px)] left-0 right-0 bottom-0 bg-white dark:bg-gray-900 shadow-lg transition-opacity duration-300 ${
+          isOpen 
+            ? 'opacity-100 pointer-events-auto' 
+            : 'opacity-0 pointer-events-none'
         }`}
+        style={{
+          '--nav-height': scrollPosition > 50 ? '56px' : '72px',
+          height: 'calc(100vh - var(--nav-height))'
+        }}
         aria-hidden={!isOpen}
       >
         <div 
-          className="container mx-auto px-4 py-4 flex flex-col space-y-4"
+          className="container mx-auto px-4 py-8 flex flex-col space-y-6"
           role="menu"
         >
           {navLinks.map((link) => (
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-dark dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors"
-              onClick={() => setIsOpen(false)}
+              className="text-lg font-medium text-dark dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors py-2 border-b border-gray-200 dark:border-gray-700"
+              onClick={handleLinkClick}
               role="menuitem"
-              aria-label={`Go to ${link.name} section`}
+              aria-label={`Ir para seção ${link.name}`}
             >
               {link.name}
             </a>
