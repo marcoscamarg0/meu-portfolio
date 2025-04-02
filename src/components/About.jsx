@@ -30,7 +30,7 @@ const About = () => {
                 alt="Minha foto de perfil" 
                 className="w-full h-full object-cover"
                 onError={(e) => {
-                  e.target.src = 'https://via.placeholder.com/400x400?text=Foto+de+Perfil';
+                  e.target.src = '';
                 }}
               />
             </div>
